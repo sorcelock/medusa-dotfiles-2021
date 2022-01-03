@@ -1,0 +1,36 @@
+#include"/home/nya/.config/colors.Xresources"
+
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.autohint:  false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+URxvt*scrollBar :	 0
+URxvt*iso14755 :	 0
+URxvt*iso14755_52 :	0
+!URxvt*transparent :	true
+URxvt.depth :	32
+URxvt*font :	xft:Hack Nerd Font Mono:pixelsize=12:style=Regular,xft:Wuncon Siji:pixelsize=12:style=Regular,xft:Noto Color Emoji:pixelsize=12:style=Regular
+!URxvt256c-ml*font: xft:Hack Nerd Font:pixelsize=12:style=Regular
+
+
+!URXVT Extensions
+URxvt.perl-ext-common: resize-font
+!URxvt.perl-ext-common: font-size,resize-font
+
+
+!font-size
+
+!URxvt.keysym.C-Down:  resize-font:smaller
+!URxvt.keysym.C-Up:    resize-font:bigger
+
+!URxvt.keysym.C-Up:     perl:font-size:increase
+!URxvt.keysym.C-Down:   perl:font-size:decrease
+!URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+!URxvt.keysym.C-S-Down: perl:font-size:decglobal
+!URxvt.keysym.C-equal:  perl:font-size:reset
+!URxvt.keysym.C-slash:  perl:font-size:show
+

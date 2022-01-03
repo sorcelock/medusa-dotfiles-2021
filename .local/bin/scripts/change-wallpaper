@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd ~/Pictures/.wall/
+cp "$1" wall.bak
+mogrify -format png wall.bak
+feh --bg-fill wall.png
+rm wall.bak

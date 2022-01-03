@@ -1,0 +1,5 @@
+#!/bin/bash
+
+id=$(xinput | grep -i touchpad | sed 's/^.*id=//;s/\s.*//')
+option=$(xinput list-props $id | grep "Tapping Enabled (" | sed 's/^.*(//;s/).*$//' )
+xinput set-prop $id $option 1

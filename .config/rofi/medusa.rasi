@@ -1,0 +1,161 @@
+* {
+    backgroundcolor: #161925;
+    bg1: #b1a6ee;
+    backgroundcoloralternate: #b1a6ee;
+    separatorcolor: #161925;
+    scrollbarcolor: #3b4252;
+    foregroundcolor: #000000;
+    foregroundcolorinverse: #ffffff;
+    selectioncolor: #fd6b85;
+	lines: 7;
+	bw: 0;
+	padding: 0;
+	line-margin: 0;
+	line-padding: 10;
+	separator-style: "none";
+	hide-scrollbar: true;
+
+
+    font-size: 1px;
+    border-color: @separatorcolor;
+	background-color: #161925;
+    background-color: @backgroundcolor;
+    text-color: @foregroundcolor;
+    text-color: #b1a6ee;
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    spacing: 0;
+}
+
+#listview {
+    spacing: 0;
+    scrollbar: false;
+    margin: 0;
+    dynamic: true;
+
+}
+
+#window {
+    background-color: @backgroundcolor;
+    border-color: @backgroundcoloralternate;
+    border: 1;
+    border-radius: 2px;
+}
+
+
+#mainbox {
+    border: 0;
+    padding: 0;
+    background-color: @backgroundcolor;
+}
+
+#element {
+    padding: 16;
+    border: 0 0 1 0;
+    border-color: @separatorcolor;
+    background-color: @backgroundcolor;
+}
+
+#element-text.selected.normal {
+	text-color: @foregroundcolor;
+	background-color: @backgroundcoloralternate;
+}
+
+#element-icon {
+	padding: 0 6 0 0;
+}
+
+#element-icon.selected.normal {
+	text-color: @foregroundcolor;
+	background-color: @backgroundcoloralternate;
+	padding: 2;
+}
+
+#element-icon.selected.active {
+	text-color: @foregroundcolor;
+	background-color: @backgroundcoloralternate;
+	padding: 2;
+}
+
+#element-icon.normal.active {
+	text-color: @foregroundcolor;
+	background-color: #fd6b85;
+	padding: 2;
+}
+
+#element.selected.normal {
+    background-color: @backgroundcoloralternate;
+    text-color: @foregroundcolorinverse;
+    border-radius: 0px;
+
+    border: 0 0 1 0;
+    border-color: @separatorcolor;
+}
+
+#element.alternate.normal {
+    background-color: @backgroundcolor;
+}
+
+#element.normal.active {
+    background-color: #fd6b85;
+}
+
+#element.alternate.active {
+    background-color: #fd6b85;
+}
+
+#element-text.normal.active {
+	text-color: #FFFFFF;
+    background-color: #fd6b85;
+}
+
+#element-text.alternate.active {
+	text-color: #FFFFFF;
+    background-color: #fd6b85;
+}
+#element.selected.active {
+    background-color: @backgroundcoloralternate;
+    text-color: @foregroundcolorinverse;
+    border-radius: 0px;
+
+    border: 0 0 1 0;
+    border-color: @separatorcolor;
+}
+
+#element-text.selected.active {
+    background-color: @backgroundcoloralternate;
+	text-color: @foregroundcolor;
+}
+
+#inputbar {
+    border: 0 solid 0 solid 1 solid 0 solid;
+    margin: 0;
+    spacing: 0;
+    border-color: @separatorcolor;
+}
+
+#prompt {
+    padding: 16;
+	text-color: @backgroundcoloralternate;
+    background-color: @foregroundcolor;
+    border: 0 1 0 0;
+}
+
+#entry {
+    padding: 16;
+}
+
+#scrollbar {
+    border: 0;
+    width: 8px;
+    handle-color: @scrollbarcolor;
+    handle-width: 8px;
+    background-color: @backgroundcolor;
+}
+
+#scrollbar handle {
+    border: 1px;
+    border-color: #ff0000;
+}
+

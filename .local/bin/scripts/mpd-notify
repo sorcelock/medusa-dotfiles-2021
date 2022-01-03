@@ -1,0 +1,3 @@
+#!/bin/sh
+
+dunstify -a "mpd-notify" -r "991051" -u "normal" "Now Playing ♫" "$(mpc current | sed 's/^.*\///g')" --urgency normal

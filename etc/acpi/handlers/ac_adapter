@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#adapter_status="/sys/class/power_supply/ADP0/"
+
+#case $( < "$adapter_status/online" ) in
+case "$1" in
+  0) su -c - nya "DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u nya)/bus \
+	  dunstify -r '991052' -a 'battery' -u 'normal' 'Charger Unplugged' \"Battery :$( cat /sys/class/power_supply/BAT0/capacity )%\"" ;;
+  1) su -c - nya "DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u nya)/bus \
+	  dunstify -r '991052' -a 'battery' -u 'normal' 'Charger Plugged' \"Status: $( cat /sys/class/power_supply/BAT0/status | awk '{if($1=="Charging")print $1; else print "Not Charging";}' ) \"" ;;
+esac
+

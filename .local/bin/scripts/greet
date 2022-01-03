@@ -1,0 +1,13 @@
+#!/bin/bash
+
+font_path="/home/nya/.fonts/3d.flf"
+flag_path="/tmp/greeted_$USER"
+
+if [ ! -e "$flag_path" ]
+then
+	touch "$flag_path"
+	#echo "Hello $USER" | lolcat
+
+	figlet -f $font_path "Hello, $USER!" | lolcat
+
+fi

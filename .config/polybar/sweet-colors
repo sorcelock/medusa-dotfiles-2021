@@ -1,0 +1,18 @@
+; vim:ft=dosini
+
+
+# TODO: buffer, color9
+
+[colors]
+background = #161925
+buffer = #4c566a
+foreground = #c3c7d1
+medusa6 = dcdfe4
+medusa7 = #b1a6ee
+medusa8 = #67d4f2
+medusa9 = #81A1C1
+urgent = #ED254E
+warning = #ff9167
+notify = #00c1e4
+success = #63e0be
+function = c74ded

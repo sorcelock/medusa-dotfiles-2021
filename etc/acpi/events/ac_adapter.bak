@@ -1,0 +1,2 @@
+event=ac_adapter
+handler=/etc/acpi/handlers/ac_adapter

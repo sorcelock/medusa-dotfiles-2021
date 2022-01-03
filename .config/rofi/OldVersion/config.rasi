@@ -1,0 +1,16 @@
+configuration {
+	modi: "drun,run,window,ssh";
+	lines: 7;
+	font: "SauceCodePro Nerd Font Mono 12";
+	bw: 0;
+	padding: 0;
+	show-icons: true;
+	terminal: "kitty";
+	icon-theme: "Sweet-Purple";
+	matching: "normal";
+	line-margin: 0;
+	line-padding: 10;
+	separator-style: "none";
+	hide-scrollbar: true;
+	theme: "medusa.rasi";
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Quicksand&family=Sacramento&family=Source+Code+Pro&family=VT323&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <div id="search-hidden">
+        <input type="text" name="q" id="search-bar-hidden">
+    </div>
+    <div class="container">
+        <h1 id="Date" style="padding-left: 5px;"></h1>
+        <div id="Time">
+            <!-- <h1 id="Time"></h1> -->
+        </div>
+        <div class="weather-widget">
+            <!-- <div class="weather-container"> -->
+                <img src="" alt="" id="weather-img">
+                <span id="weather-temperature">
+
+                </span>
+                <span id="weather-description">
+
+                </span>
+            <!-- </div> -->
+        </div>
+        <div id="shortcut-container">
+            <div class="shortcut" id="reddit">
+                <div class="shortcut-title">
+                    Reddit
+                </div>
+                <div class="shortcut-links">
+                    <a class="bookmark" href="" target="_blank">BLANK</a>
+                </div>
+
+            </div>
+            <div class="shortcut" id="youtube">
+                <div class="shortcut-title">
+                    YouTube
+                </div>
+                <div class="shortcut-links">
+                    <ul>
+                        <a class="bookmark" href=""
+                            target="_blank">BLANK</a>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="shortcut" id="resources">
+                <div class="shortcut-title">
+                    Resources
+                </div>
+                <div class="shortcut-links">
+                    <ul>
+                        <a class="bookmark" href="" target="_blank">BLANK</a>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="shortcut" id="academic">
+                <div class="shortcut-title">
+                    Academic
+                </div>
+                <div class="shortcut-links">
+                    <ul>
+                        <a class="bookmark" href="" target="_blank">BLANK</a>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        getDate = () => {
+            let today = new Date();
+            let weekday = today.toLocaleString("default", { weekday: "long" })
+            let month = today.toLocaleString("default", { month: "long" })
+            return (weekday + ', ' + month + " " + today.getDate());
+        }
+
+        getTime = () => {
+
+            let now = new Date();
+            let hours = (now.getHours() < 10) ? "0" + now.getHours() : now.getHours();
+            let minutes = (now.getMinutes() < 10) ? "0" + now.getMinutes() : now.getMinutes();
+            let seconds = (now.getSeconds() < 10) ? "0" + now.getSeconds() : now.getSeconds();
+            let meridian = (now.getHours() > 12) ? "PM" : "AM";
+
+            return (hours + ":" + minutes + ":" + seconds + " " + meridian);
+
+        }
+
+        window.onload = () => {
+
+            //First Run Setup
+            let xhr = new XMLHttpRequest();
+            // Request to open weather map
+            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=1259229&units=metric&appid=357fef78495cfe1c7a24a168f1802214');
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        //console.log(json);
+                        document.querySelector("#weather-img").src = "http://openweathermap.org/img/wn/" + json.weather[0].icon + "@2x.png"
+                        // document.querySelector("#weather-temperature").innerHTML = json.main.temp.toFixed(0) + " &#8451";
+                        document.querySelector("#weather-temperature").innerHTML = json.main.temp.toFixed(0) + " &#176C";
+                        let str = json.weather[0].description;
+                        str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+                            return letter.toUpperCase();
+                        });
+                        document.querySelector("#weather-description").innerHTML = str;
+                    } else {
+                        console.log('error msg: ' + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+
+
+            document.querySelector("#Date").innerHTML = getDate();
+            document.querySelector('#Time').innerHTML = getTime();
+            //Make Stuff Tick
+            setInterval(() => {
+                document.querySelector("#Date").innerHTML = getDate();
+            }, 100);
+            setInterval(() => {
+                document.querySelector('#Time').innerHTML = getTime()
+            }, 100);
+        }
+
+        function showShortcuts() {
+            let result = document.querySelectorAll('.shortcut-title');
+            for (var i = 0; i < result.length; i++) {
+                result[i].style.display = '';
+            }
+            document.querySelector('#search-bar-hidden').value = '';
+            document.querySelector('#search-bar-hidden').blur();
+            document.querySelector('#search-hidden').style.display = 'none';
+        }
+        function hideShortcuts() {
+            let result = document.querySelectorAll('.shortcut-title');
+            for (var i = 0; i < result.length; i++) {
+                result[i].style.display = 'none';
+            }
+            document.querySelector('#search-hidden').style.display = 'flex';
+            document.querySelector('#search-bar-hidden').focus();
+        }
+        document.querySelector("#search-bar-hidden").addEventListener("keydown", event => {
+            if(event.keyCode == 13) {
+                let str = document.querySelector("#search-bar-hidden").value;
+                str = str.trim();
+                // regex=new RegExp('(^https:\/\/|^http:\/\/)');
+                let regex = /^https:\/\/|^http:\/\//
+                let found = ((str.match(regex)));
+
+                if(found != null){
+                    window.open(str);
+                    showShortcuts();
+                }
+                else{
+                    found = str.match(/^.*:/);
+                    if(found == null){
+                        window.open("https://google.com/search?q=" + str);
+						showShortcuts();
+						return;
+                    }
+					found = found[0];
+					let regex = new RegExp("^"+found);
+                    if(found==="yt:"){
+                        window.open("https://youtube.com/results?search_query="+str.replace(regex,""));
+                    }
+					else if( found==="maps:" ) {
+								window.open("https://google.com/maps/search/" + str.replace(regex,""));
+					}
+					else if( found==="1337x:" ) {
+								window.open("https://1337x.to/search/" + (str.replace(regex,"")).replaceAll(" ","+") + "/1/");
+					}
+					else if( found==="nibl:" ) {
+								window.open("https://nibl.co.uk/search?query=" + (str.replace(regex,"")).replaceAll(" ","+") );
+					}
+					else if( found==="nyaa:" ) {
+								window.open("https://nyaa.si/?q=" + (str.replace(regex,"")).replaceAll(" ","+") + "&f=0&c=0_0&s=seeders&o=desc");
+					}
+                    showShortcuts();
+                }
+
+
+            }
+        })
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {
+                hideShortcuts();
+            }
+            else if (event.keyCode == 27) {
+                showShortcuts();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

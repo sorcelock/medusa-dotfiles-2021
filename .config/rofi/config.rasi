@@ -1,0 +1,9 @@
+configuration {
+	modi: "drun,run,window,ssh";
+	font: "SauceCodePro Nerd Font Mono 12";
+	show-icons: true;
+	terminal: "kitty";
+	icon-theme: "Sweet-Purple";
+	matching: "normal";
+}
+@theme "medusa.rasi"

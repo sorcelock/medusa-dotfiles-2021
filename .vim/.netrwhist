@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/nya/Documents'
+let g:netrw_dirhist_2='/home/nya/.config/polybar'
+let g:netrw_dirhist_1='/etc/NetworkManager/conf.d'
+let g:netrw_dirhist_0='/home/nya/.config/i3'
+let g:netrw_dirhist_9='/home/nya/.config/ncmpcpp'
+let g:netrw_dirhist_8='/home/nya/Documents/RDBMSProject'
+let g:netrw_dirhist_7='/home/nya/.config/neofetch'
+let g:netrw_dirhist_6='/home/nya/.config/ncmpcpp'
+let g:netrw_dirhist_5='/home/nya/.local/bin/scripts'
+let g:netrw_dirhist_4='/home/nya'

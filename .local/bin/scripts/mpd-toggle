@@ -1,0 +1,14 @@
+#!/bin/sh
+
+pause_stat="$(mpc status | grep -c paused)"
+play_stat="$(mpc status | grep -c playing)"
+
+if [ "$pause_stat" -eq "1" ];
+then
+	mpc toggle && mpd-notify
+elif [ "$play_stat" -eq "1" ];
+then
+	mpc toggle
+else
+	mpc toggle && mpd-notify
+fi

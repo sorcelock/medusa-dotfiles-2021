@@ -1,0 +1,4 @@
+#!/bin/sh
+
+DISPLAY=:0 su -c - nya "if [[ $(ps aux | sed '/xss/d' | grep -c -i betterlockscreen) -eq 1 ]]; then betterlockscreen -l dimblur; fi"
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+id=$(xinput | grep -i touchpad | sed 's/^.*id=//;s/\s.*//')
+if [[ "$1" == "1"]];
+then
+	xinput set-prop $id 153 1;
+else
+	xinput set-prop $id 153 0;
+fi
